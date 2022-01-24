@@ -15,4 +15,18 @@ spec:
       containers:
       - name: react-server
         image: 01tut_react
+        ports:
+        - containerPort: 3000
         imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-service
+spec:
+  type: NodePort
+  ports:
+  - port: 3000
+    targetPort: 3000
+  selector:
+    app: react-server

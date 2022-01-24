@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: react-server
+  template:
+    metadata:
+      labels:
+        app: react-server
+    spec:
+      containers:
+      - name: react-server
+        image: 01tut_react
+        imagePullPolicy: IfNotPresent
